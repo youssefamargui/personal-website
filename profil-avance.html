@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Avancé de Youssef Amargui</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Youssef Amargui</h1>
+    </header>
+
+    <section id="about">
+        <h2>À propos de moi</h2>
+        <img src="me.jpg" alt="Youssef Amargui" width="200">
+        <p>Youssef Amargui, étudiant à l'EMSI Les Orangers.</p>
+    </section>
+    <section id="hobbies-goals">
+        <h2>Hobbies et Objectifs</h2>
+        <h3>Hobbies</h3>
+        <ul>
+            <li>Développement web</li>
+            <li>Cybersécurité</li>
+            <li>Voyages et cultures</li>
+            <li>Sport</li>
+        </ul>
+        <h3>Objectifs pour cette année</h3>
+        <ol>
+            <li>Terminer mes études à l'EMSI avec mention</li>
+            <li>Perfectionner mes compétences en cybersécurité</li>
+            <li>Travailler sur des projets de développement avancé</li>
+        </ol>
+    </section>
+    <section id="friends">
+        <h2>Mes Amis</h2>
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Âge</th>
+                <th>Ville</th>
+                <th>Profil</th>
+            </tr>
+            <tr>
+                <td>Aymane</td>
+                <td>20</td>
+                <td>Casablanca</td>
+                <td><a href="https://www.linkedin.com/in/aymane-bouras-600b91203/" target="_blank">Lien</a></td>
+            </tr>
+            <tr>
+                <td>Nouamane</td>
+                <td>20</td>
+                <td>Casablanca</td>
+                <td><a href="https://www.linkedin.com/in/nou%C3%A2mane-azzat-394a0b330/" target="_blank">Lien</a></td>
+            </tr>
+            <tr>
+                <td>Aimane</td>
+                <td>20</td>
+                <td>Casablanca</td>
+                <td><a href="https://www.linkedin.com/in/aimane-bendahma-948194202/" target="_blank">Lien</a></td>
+            </tr>
+        </table>
+    </section>
+    <section id="contact">
+        <h2>Contactez-moi</h2>
+        <form id="contactForm">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message :</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+    </body>
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+    
+            if (name && email.includes("@")) {
+                alert("Formulaire envoyé avec succès !");
+                this.reset();
+            } else {
+                alert("Veuillez remplir tous les champs correctement.");
+            }
+        });
+        
+    </script>
+            
