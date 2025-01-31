@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("{{ asset('images/bg2.jpg') }}");
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="hero-section">
+    <div class="container">
+        <div class="hero-content text-center">
+            <h1 class="display-4 fade-in">Location de Voitures</h1>
+            <p class="lead slide-up">Trouvez la voiture parfaite pour vos besoins</p>
+            <hr class="my-4 slide-up-delay-1">
+            <p class="mb-4 slide-up-delay-2">Nous proposons une large gamme de véhicules à des prix compétitifs.</p>
+            <a class="btn btn-primary btn-lg pulse" href="{{ path('rental_vehicles') }}" role="button">
+                <i class="fas fa-car me-2"></i>Voir nos véhicules
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <!-- Features Section -->
+    <div class="row features-section">
+        <div class="col-md-4 fade-in-left">
+            <div class="feature-card">
+                <i class="fas fa-car-side"></i>
+                <h3>Large choix</h3>
+                <p>Des véhicules pour tous les besoins et tous les budgets.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card">
+                <i class="fas fa-coins"></i>
+                <h3>Prix compétitifs</h3>
+                <p>Des tarifs adaptés à tous les budgets.</p>
+            </div>
+        </div>
+        <div class="col-md-4 fade-in-right">
+            <div class="feature-card">
+                <i class="fas fa-check-circle"></i>
+                <h3>Réservation simple</h3>
+                <p>Réservez en quelques clics.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="row mt-5">
+        <div class="col-md-6 fade-in-left">
+            <div class="info-card">
+                <h3><i class="fas fa-phone-alt me-2"></i>Contactez-nous</h3>
+                <ul class="contact-list">
+                    <li><i class="fas fa-phone me-2"></i>Téléphone: +212 555-46-08-92</li>
+                    <li><i class="fas fa-mobile-alt me-2"></i>Mobile: +212 655-46-08-92</li>
+                    <li><i class="fas fa-envelope me-2"></i>Email: contact@carrental.ma</li>
+                    <li>
+                        <i class="fas fa-clock me-2"></i>Horaires:
+                        <div class="ms-4">
+                            <div>Lundi - Vendredi: 9h00 - 18h00</div>
+                            <div>Samedi: 9h00 - 13h00</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 fade-in-right">
+            <div class="info-card">
+                <h3><i class="fas fa-map-marker-alt me-2"></i>Notre agence</h3>
+                <p>123, Avenue Mohammed V<br>
+                Quartier des affaires<br>
+                Casablanca, Maroc</p>
+                
+                <h4 class="mt-4"><i class="fas fa-star me-2"></i>Nos services</h4>
+                <ul class="services-list">
+                    <li><i class="fas fa-check me-2"></i>Livraison à domicile</li>
+                    <li><i class="fas fa-check me-2"></i>Assurance tous risques</li>
+                    <li><i class="fas fa-check me-2"></i>Assistance 24/7</li>
+                    <li><i class="fas fa-check me-2"></i>GPS inclus</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="why-us-section mt-5">
+        <h2 class="text-center mb-4">Pourquoi nous choisir ?</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="stat-card text-center">
+                    <i class="fas fa-car mb-3"></i>
+                    <h4>+50</h4>
+                    <p>Véhicules disponibles</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card text-center">
+                    <i class="fas fa-users mb-3"></i>
+                    <h4>+1000</h4>
+                    <p>Clients satisfaits</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card text-center">
+                    <i class="fas fa-calendar-check mb-3"></i>
+                    <h4>+5000</h4>
+                    <p>Réservations réussies</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card text-center">
+                    <i class="fas fa-trophy mb-3"></i>
+                    <h4>5 ans</h4>
+                    <p>D'expérience</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

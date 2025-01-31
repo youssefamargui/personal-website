@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>{{ title }}</h1>
+        <a href="{{ path('admin_vehicles') }}" class="btn btn-secondary">Retour à la liste</a>
+    </div>
+
+    {% if vehicle is defined %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Informations actuelles</h5>
+                <p class="card-text">
+                    Marque : {{ vehicle.brand }}<br>
+                    Modèle : {{ vehicle.model }}<br>
+                    Prix journalier : {{ vehicle.dailyPrice|number_format(2, ',', ' ') }} DH<br>
+                    Statut : {% if vehicle.isAvailable %}Disponible{% else %}Indisponible{% endif %}
+                </p>
+            </div>
+        </div>
+    {% endif %}
+    
+    {{ form_start(form, {'attr': {'class': 'mt-4'}}) }}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.brand) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.model) }}
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                {{ form_row(form.dailyPrice) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.isAvailable) }}
+            </div>
+        </div>
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">{{ vehicle is defined ? 'Modifier' : 'Ajouter' }}</button>
+            <a href="{{ path('admin_vehicles') }}" class="btn btn-secondary">Annuler</a>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %} 

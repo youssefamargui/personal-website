@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos véhicules{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-4 text-center">Nos véhicules disponibles</h1>
+    
+    <div class="row mt-4">
+        {% for vehicle in vehicles %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    {% if vehicle.imageFilename %}
+                        <img src="{{ asset('uploads/vehicles/' ~ vehicle.imageFilename) }}" 
+                             class="card-img-top" 
+                             alt="{{ vehicle.brand }} {{ vehicle.model }}"
+                             style="height: 200px; object-fit: cover;">
+                    {% else %}
+                        <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <i class="fas fa-car fa-3x text-muted"></i>
+                        </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-car me-2"></i>
+                            {{ vehicle.brand }} {{ vehicle.model }}
+                        </h5>
+                        <p class="card-text">
+                            <strong><i class="fas fa-coins me-2"></i>Prix par jour :</strong> {{ vehicle.dailyPrice|number_format(2, ',', ' ') }} DH
+                            <br>
+                            <strong><i class="fas fa-info-circle me-2"></i>Statut :</strong> 
+                            {% if vehicle.isAvailable %}
+                                <span class="badge bg-success">Disponible</span>
+                            {% else %}
+                                <span class="badge bg-danger">Indisponible</span>
+                            {% endif %}
+                        </p>
+                        {% if vehicle.isAvailable %}
+                            <a href="{{ path('rental_book', {'id': vehicle.id}) }}" class="btn btn-primary w-100">
+                                <i class="fas fa-calendar-check me-2"></i>Réserver
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12 text-center">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Aucun véhicule disponible pour le moment.
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} 

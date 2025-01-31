@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réserver un véhicule{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card booking-form-card">
+                <div class="card-body">
+                    <h1 class="card-title mb-4">
+                        <i class="fas fa-calendar-check me-2"></i>
+                        Réserver un véhicule
+                    </h1>
+
+                    {{ form_start(form, {'attr': {'class': 'booking-form'}}) }}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                {{ form_row(form.customer.firstName, {
+                                    'attr': {
+                                        'class': 'form-control',
+                                        'placeholder': 'Votre prénom'
+                                    }
+                                }) }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                {{ form_row(form.customer.lastName, {
+                                    'attr': {
+                                        'class': 'form-control',
+                                        'placeholder': 'Votre nom'
+                                    }
+                                }) }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                {{ form_row(form.customer.email, {
+                                    'attr': {
+                                        'class': 'form-control',
+                                        'placeholder': 'votre@email.com'
+                                    }
+                                }) }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                {{ form_row(form.customer.phone, {
+                                    'attr': {
+                                        'class': 'form-control',
+                                        'placeholder': 'Votre numéro de téléphone'
+                                    }
+                                }) }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                {{ form_row(form.startDate, {
+                                    'attr': {
+                                        'class': 'form-control datepicker'
+                                    }
+                                }) }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                {{ form_row(form.endDate, {
+                                    'attr': {
+                                        'class': 'form-control datepicker'
+                                    }
+                                }) }}
+                            </div>
+                        </div>
+
+                        <div class="total-price-section mb-4">
+                            <h4>Total estimé</h4>
+                            <div class="price-display">
+                                <span class="amount">{{ vehicle.dailyPrice|number_format(2, ',', ' ') }}</span>
+                                <span class="currency">DH</span>
+                                <span class="per-day">/jour</span>
+                            </div>
+                            <div class="price-details">
+                                <small>* Le prix final sera calculé en fonction de la durée de location</small>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-check me-2"></i>Confirmer la réservation
+                            </button>
+                            <a href="{{ path('rental_vehicles') }}" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-arrow-left me-2"></i>Retour
+                            </a>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card vehicle-summary-card">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        <i class="fas fa-car me-2"></i>Véhicule sélectionné
+                    </h3>
+                    
+                    {% if vehicle.imageFilename %}
+                        <img src="{{ asset('uploads/vehicles/' ~ vehicle.imageFilename) }}" 
+                             class="img-fluid rounded mb-3" 
+                             alt="{{ vehicle.brand }} {{ vehicle.model }}">
+                    {% endif %}
+
+                    <div class="vehicle-details">
+                        <h4>{{ vehicle.brand }} {{ vehicle.model }}</h4>
+                        <ul class="vehicle-specs">
+                            <li>
+                                <i class="fas fa-coins me-2"></i>
+                                <strong>Prix journalier:</strong> {{ vehicle.dailyPrice|number_format(2, ',', ' ') }} DH
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle me-2"></i>
+                                <strong>Statut:</strong> 
+                                {% if vehicle.isAvailable %}
+                                    <span class="badge bg-success">Disponible</span>
+                                {% else %}
+                                    <span class="badge bg-danger">Indisponible</span>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de réservation{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="card confirmation-card">
+        <div class="card-body">
+            <h1 class="card-title text-center mb-4">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                Réservation confirmée !
+            </h1>
+
+            <div class="alert alert-success text-center mb-4">
+                Votre réservation a été enregistrée avec succès.
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <i class="fas fa-car me-2"></i>
+                                Détails du véhicule
+                            </h4>
+                            <ul class="list-unstyled">
+                                <li><strong>Marque :</strong> {{ vehicle.brand }}</li>
+                                <li><strong>Modèle :</strong> {{ vehicle.model }}</li>
+                                <li><strong>Prix journalier :</strong> {{ vehicle.dailyPrice|number_format(2, ',', ' ') }} DH</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <i class="fas fa-calendar-alt me-2"></i>
+                                Détails de la réservation
+                            </h4>
+                            <ul class="list-unstyled">
+                                <li><strong>Du :</strong> {{ rental.startDate|date('d/m/Y') }}</li>
+                                <li><strong>Au :</strong> {{ rental.endDate|date('d/m/Y') }}</li>
+                                <li><strong>Prix total :</strong> {{ rental.totalPrice|number_format(2, ',', ' ') }} DH</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <i class="fas fa-user me-2"></i>
+                        Vos informations
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li><strong>Nom :</strong> {{ customer.lastName }}</li>
+                        <li><strong>Prénom :</strong> {{ customer.firstName }}</li>
+                        <li><strong>Email :</strong> {{ customer.email }}</li>
+                        <li><strong>Téléphone :</strong> {{ customer.phone }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="{{ path('rental_vehicles') }}" class="btn btn-primary">
+                    <i class="fas fa-arrow-left me-2"></i>
+                    Retour à la liste des véhicules
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

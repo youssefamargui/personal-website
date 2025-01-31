@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>{{ title }}</h1>
+    
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h2>Bienvenue sur notre service de location de voitures</h2>
+            <a href="{{ path('rental_vehicles') }}" class="btn btn-primary">
+                Voir nos véhicules disponibles
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

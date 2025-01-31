@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration des véhicules{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1><i class="fas fa-cogs me-2"></i>Gestion des véhicules</h1>
+        <a href="{{ path('admin_vehicle_new') }}" class="btn btn-primary">
+            <i class="fas fa-plus me-2"></i>Ajouter un véhicule
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Marque</th>
+                        <th>Modèle</th>
+                        <th>Prix/jour</th>
+                        <th>Disponible</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vehicle in vehicles %}
+                        <tr>
+                            <td>{{ vehicle.id }}</td>
+                            <td>{{ vehicle.brand }}</td>
+                            <td>{{ vehicle.model }}</td>
+                            <td>{{ vehicle.dailyPrice|number_format(2, ',', ' ') }} DH</td>
+                            <td>
+                                {% if vehicle.isAvailable %}
+                                    <span class="badge bg-success">
+                                        <i class="fas fa-check me-1"></i>Oui
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-danger">
+                                        <i class="fas fa-times me-1"></i>Non
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ path('admin_vehicle_edit', {'id': vehicle.id}) }}" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-edit me-1"></i>Modifier
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %} 
